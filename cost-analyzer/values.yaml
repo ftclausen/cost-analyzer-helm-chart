@@ -221,6 +221,7 @@ kubecostModel:
 ingress:
   enabled: false
   annotations:
+    # Note kubernetes.io/ingress.class is deprecated in K8s 1.18+
     kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   paths: ["/"] # There's no need to route specifically to the pods-- we have an nginx deployed that handles routing
@@ -230,6 +231,9 @@ ingress:
   #  - secretName: cost-analyzer-tls
   #    hosts:
   #      - cost-analyzer.local
+  #
+  # K8s 1.18+ class name spec
+  # ingressClassName: nginx
 
 nodeSelector: {}
 
